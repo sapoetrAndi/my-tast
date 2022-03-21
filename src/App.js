@@ -6,7 +6,7 @@ import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <div className="app">
       <div className="logo">
         <img src={logo} alt="logo"/>
           <h3>Task List</h3>

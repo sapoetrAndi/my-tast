@@ -1,8 +1,11 @@
 import React from "react";
+import "../styles/Button.css";
 
-const Button = () =>{
+const Button = props =>{
     return(
-        <button>click</button>
+        <button className={`btn btn-${props.variant}`}>
+            {props.text}
+        </button>
     )
 }
 
