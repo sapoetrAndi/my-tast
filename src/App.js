@@ -24,6 +24,18 @@ class App extends React.Component{
     this.setState({
       todos: this.state.todos.filter(item => item.id != id)
     })
+    console.log(this.state);
+  }
+
+  addTask = data => {
+    const id = this.state.todos.length;
+    const newData = {
+      id: id +1,
+      title: data,
+    }
+    this.setState({
+      todos: [...this.state.todos, newData]
+    })
   }
 
   render(){
@@ -40,7 +52,7 @@ class App extends React.Component{
           )}
         </div>
         <div className="input-form">
-          <FormInput/>
+          <FormInput add={this.addTask}/>
         </div>
       </div>
     );

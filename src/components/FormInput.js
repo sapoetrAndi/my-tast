@@ -2,15 +2,34 @@ import React from "react";
 import Button from "./Button";
 import "../styles/FormInput.css";
 class FormInput extends React.Component{
+    state = {
+        text: '',
+    }
+
+    change = e =>{
+        this.setState({text: e.target.value})
+    }
+
+    submit = e =>{
+        e.preventDefault()
+        if(this.state.text != ""){
+            this.props.add(this.state.text);
+        }
+        this.setState({
+            text: ""
+        })
+    }
     render(){
         return(
-        <form action="" style={inputForm}>
-            <input 
+        <form style={inputForm} onSubmit={this.submit}>
+            <input
+                onChange={this.change}
+                value={this.state.text}
                 type="text" 
                 style={input}
                 placeholder="add task"
             />
-            <Button text="add" variant="primary"/>
+            <Button text="add" variant="primary" action={this.submit}/>
         </form>
         )
     }
