@@ -2,7 +2,7 @@ import React from "react";
 import Button from "./Button";
 import PropTypes from "prop-types";
 
-const TodoItem = ({todo, del}) => {
+const TodoItem = ({todo, del, open}) => {
     const {id, title} = todo;
     const delById = id => {
         del(id);
@@ -11,8 +11,11 @@ const TodoItem = ({todo, del}) => {
         <div style={todoItem}>
             <p>{title}</p>
             <div>
-                <Button text="edit" variant="success"/>
+                <Button text="edit" variant="success" action={open()}/>
+                {/* bisa seperti ini */}
                 <Button text="delete" variant="warning" action={()=> delById(id)}/>
+                {/* atau langsung seperti ini */}
+                {/* <Button text="delete" variant="warning" action={()=> del(id)}/> */}
             </div>
         </div>
     )

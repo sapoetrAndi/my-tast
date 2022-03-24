@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import FormInput from './components/FormInput';
-// import Button from './components/Button';
+import EditModal from './components/EditModal';
 import TodoItem from './components/TodoItem';
 import './App.css';
 
@@ -16,7 +16,20 @@ class App extends React.Component{
         id: 2,
         title: "workout training",
       },
-    ]
+    ],
+    isEdit: false,
+  }
+
+  openModal = () => {
+    this.setState({
+      isEdit: true
+    })
+  }
+
+  closeModal = () => {
+    this.setState({
+      isEdit: false
+    })
   }
 
   deleteTask = id => {
@@ -48,12 +61,18 @@ class App extends React.Component{
         </div>
         <div className="list">
           {todos.map(item =>            
-            <TodoItem key={item.id} todo={item} del={this.deleteTask}/>
+            <TodoItem   
+              key={item.id} 
+              todo={item} 
+              del={this.deleteTask}
+              open={this.openModal}
+            />
           )}
         </div>
         <div className="input-form">
           <FormInput add={this.addTask}/>
         </div>
+        <EditModal edit={this.state.isEdit} close={this.closeModal}/>
       </div>
     );
   }
