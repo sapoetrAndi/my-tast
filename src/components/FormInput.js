@@ -1,7 +1,9 @@
 import React from "react";
 import Button from "./Button";
 import "../styles/FormInput.css";
+import PropTypes from "prop-types";
 class FormInput extends React.Component{
+    
     state = {
         text: '',
     }
@@ -34,6 +36,12 @@ class FormInput extends React.Component{
         )
     }
 }
+
+FormInput.propTypes = {
+    // data: PropTypes.object.isRequired,
+    add: PropTypes.func.isRequired,
+}
+
 export default FormInput;
 
 const inputForm = {
